@@ -1,5 +1,6 @@
 ﻿using AkongBlogCore.Domain.Identity;
 using AkongBlogInfrastructure.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +11,9 @@ public static class DependencyInjection
     {
         // Add Identity
         services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connectionString));
-        services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IdentityContext>();
+        services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<IdentityContext>();
 
         return services;
     }
