@@ -18,6 +18,9 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
+// Syncfusion
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(builder.Configuration.GetValue<string>("SyncfusionKey"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
