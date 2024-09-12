@@ -8,5 +8,10 @@ namespace AkongBlogWeb.Areas.Maintenance.Pages.Blog
         public void OnGet()
         {
         }
+
+        public IActionResult OnPostListAllAsync()
+        {
+            return Page();
+        }
     }
 }

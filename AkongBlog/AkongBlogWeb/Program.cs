@@ -2,13 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using AkongBlogInfrastructure.DependencyInjection;
 using AkongBlogWeb.Areas.Identity.Data;
 using AkongBlogWeb;
+using Application;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddInfrastructure(connectionString);
-builder.Services.ConfigureServices();
+builder.Services.ConfigureDefaultServices();
+builder.Services.AddApplicationServices();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

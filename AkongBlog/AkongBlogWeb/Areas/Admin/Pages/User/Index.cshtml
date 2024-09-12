@@ -1,8 +1,90 @@
 ﻿@page
 @model AkongBlogWeb.Areas.Admin.Pages.User.IndexModel
 @{
-    ViewData["Title"] = "Admin - User";
+    ViewData["Title"] = "Admin - Users";
 }
-<div class="container">
-    Hello World!
+<div class="users-content">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Users</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                        <li class="breadcrumb-item active">Users</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">List of users</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <table id="users" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.ApplicationUser!.UserName)</th>
+                                            <th>@Html.DisplayNameFor(model => model.ApplicationUser!.Email)</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </div>
+
+@section Scripts
+{
+    <partial name="_DataTablesScript" />
+    <script>
+        $(document).ready(function () {
+            $('#users').DataTable({
+                deferRender: true,
+                ordering: true,
+                paging: true,
+                searching: true,
+                select: false,
+                order: [[0, 'asc']],
+                processing: true,  // <-- Move this outside of the `ajax` block
+                serverSide: true,  // You need server-side processing when using `ajax`
+                ajax: {
+                    url: '/Admin/User?handler=ListAll',
+                    type: "POST",
+                    headers: {
+                        RequestVerificationToken: $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                },
+                columns: [
+                    { data: "userName", name: "UserName", searchable: true },
+                    { data: "email", name: "Email", searchable: true },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            // Render some content like buttons or actions
+                            return '<button class="btn btn-primary">Edit</button>';
+                        },
+                        sortable: false,
+                        width: "20%",
+                    },
+                    { data: "id", name: "Id", visible: false },
+                ],
+            });
+        });
+    </script>
+}
