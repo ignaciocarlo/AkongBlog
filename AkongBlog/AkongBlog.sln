@@ -7,17 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEDD1F9D-E2D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkongBlogCore", "AkongBlogCore", "{3AC8AF07-063B-4DA4-A81F-EF47BAAEC600}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{FF8CFA4B-D2AD-4C0F-90A1-2E2B4A3F88B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{FF8CFA4B-D2AD-4C0F-90A1-2E2B4A3F88B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{31EFF657-837B-4042-A09E-66A7A24E9861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{31EFF657-837B-4042-A09E-66A7A24E9861}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkongBlogInfrastructure", "AkongBlogInfrastructure", "{A235BD43-A7C5-4D06-B612-D3F3FD09522D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{16A4DBFF-D9DB-4DCA-A0BC-5C4F7C82BED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{16A4DBFF-D9DB-4DCA-A0BC-5C4F7C82BED2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkongBlogPresentation", "AkongBlogPresentation", "{57B1A956-FBFE-4ABF-9757-D8EFAC3D2681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkongBlogWeb", "AkongBlogWeb\AkongBlogWeb.csproj", "{58B7668E-8BBD-4813-A096-466B150EB75A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AkongBlogWeb", "AkongBlogWeb\AkongBlogWeb.csproj", "{58B7668E-8BBD-4813-A096-466B150EB75A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

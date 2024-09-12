@@ -1,13 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using AkongBlogInfrastructure.DependencyInjection;
 using AkongBlogWeb.Areas.Identity.Data;
+using AkongBlogWeb;
+using Application;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
-
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddInfrastructure(connectionString);
+builder.Services.ConfigureDefaultServices();
+builder.Services.AddApplicationServices();
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
@@ -17,7 +21,6 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +40,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
 var scope = app.Services.CreateScope();
 await DefaultRole.SeedData(scope.ServiceProvider);
 await DefaultUser.SeedData(scope.ServiceProvider);
